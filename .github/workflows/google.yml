@@ -41,5 +41,5 @@ jobs:
 
       - name: Deploy Helm Chart
         run: |
-          helm install django-env ./configuration -n bo-satge
+          helm install django-env ./configuration -n bo-stage
           helm install backend-application ./application -n bo-stage
