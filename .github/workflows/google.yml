@@ -41,4 +41,5 @@ jobs:
 
       - name: Deploy Helm Chart
         run: |
-          helm upgrade --install django-app ./application --namespace bo-stage --values ./application/values.yaml
+          helm install django-env ./configuration
+          helm install backend-application ./application
