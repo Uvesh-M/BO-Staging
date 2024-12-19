@@ -12,9 +12,9 @@ django:
     tag: latest
   replicas: 1
   resources:
-    limits:
-      cpu: 3
-      memory: 6Gi 
     requests:
-      cpu: 2
-      memory: 4Gi
+      memory: 256Mi
+      cpu: 500m
+    limits:
+      memory: 512Mi
+      cpu: 1
