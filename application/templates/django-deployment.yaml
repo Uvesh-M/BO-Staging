@@ -45,3 +45,14 @@ spec:
             periodSeconds: 15
             failureThreshold: 5
             successThreshold: 1
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: better-backend-app-pdb
+  namespace: bo-stage
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: better-backend-app-django
