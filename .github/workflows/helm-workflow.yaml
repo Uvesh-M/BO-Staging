@@ -30,4 +30,4 @@ jobs:
 
       - name: Deploy Helm Chart
         run: |
-          helm upgrade --install django-app application --namespace bo-staging --values application/values.yaml
+          helm upgrade --install django-app ./application --namespace bo-staging --values ./application/values.yaml
