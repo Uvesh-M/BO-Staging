@@ -10,7 +10,7 @@ django:
   image:
     repository: asia-south1-docker.pkg.dev/bo-stage/bo-main/12-12-2024_18-46-19
     tag: latest
-  replicas: 3
+  replicas: 1
   resources:
     requests:
       memory: 256Mi
