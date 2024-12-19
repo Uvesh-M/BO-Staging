@@ -22,7 +22,7 @@ jobs:
 
       - name: Configure kubectl
         run: |
-          gcloud container clusters get-credentials better-staging --zone as-south1
+          gcloud container clusters get-credentials better-staging --region asia-south1 --project bo-stage
 
       - name: Install Helm
         run: |
@@ -30,4 +30,4 @@ jobs:
 
       - name: Deploy Helm Chart
         run: |
-          helm upgrade --install django-app ./application --namespace YOUR_NAMESPACE --values ./application/values.yaml
+          helm upgrade --install django-app ./application --namespace bo-stage --values ./application/values.yaml
