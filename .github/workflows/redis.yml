@@ -13,7 +13,7 @@ env:
   GKE_ZONE: asia-south1
   VALUE_PATH: redis/values.yaml
   DEPLOYMENT_NAME: redis
-  NAMESPACE: redis
+  NAMESPACE: default
 
 jobs:
   deploy:
