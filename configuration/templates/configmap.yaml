@@ -5,9 +5,9 @@ metadata:
 data:
   ALL_SUB_CATEGORY_TAB_IMAGE_URL : "https://better-how-to-play.s3.ap-south-1.amazonaws.com/unselect_all.png"
   ALLOWED_HOSTS : '["*"]'
-  AWS_ACCESS_KEY_ID : "AKIAXEJQBHHZY3HZCJUX"
-  AWS_SECRET_ACCESS_KEY : "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"
-  DB_HOST : "10.57.62.3"
+  #AWS_ACCESS_KEY_ID : "AKIAXEJQBHHZY3HZCJUX"
+  #AWS_SECRET_ACCESS_KEY : "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"
+  DB_HOST : "10.250.128.10"  # added GCP SQL internal IP
   DB_NAME : "better_opinions_integration_db"
   DB_PASSWORD : "better_app_admin"
   DB_PORT : "5432"
@@ -19,10 +19,10 @@ data:
   RABBITMQ_PORT : "5672"
   RABBITMQ_USER : "admin"
   RABBITMQ_PASSWORD : "STs3gz0RCpIiOka"
-  READ_1_DB_HOST : "10.57.62.3"
-  READ_2_DB_HOST : "10.57.62.3"
-  READ_3_DB_HOST : "10.57.62.3"
-  READ_4_DB_HOST : "10.57.62.3"
+  READ_1_DB_HOST : "10.250.128.10"
+  READ_2_DB_HOST : "10.250.128.10"
+  READ_3_DB_HOST : "10.250.128.10"
+  READ_4_DB_HOST : "10.250.128.10"
   READ_DB_NAME : "better_opinions_integration_db"
   READ_DB_PASSWORD : "better_app_admin"
   READ_DB_PORT : "5432"
