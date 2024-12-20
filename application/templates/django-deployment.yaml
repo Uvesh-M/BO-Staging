@@ -29,19 +29,21 @@ spec:
             limits:
               memory: {{ .Values.django.resources.limits.memory }}
               cpu: {{ .Values.django.resources.limits.cpu }}
-          livenessProbe:
-            httpGet:
-                path: /health/
-                port: 8000
-            initialDelaySeconds: 120
-            periodSeconds: 5
-            failureThreshold: 10
-            successThreshold: 1
-          readinessProbe:
-            httpGet:
-                path: /health/
-                port: 8000
-            initialDelaySeconds: 150
-            periodSeconds: 5
-            failureThreshold: 10
-            successThreshold: 1
+
+# Commenting the livenessProbe and readinessProbe 
+          # livenessProbe:
+          #   httpGet:
+          #       path: /health/
+          #       port: 8000
+          #   initialDelaySeconds: 120
+          #   periodSeconds: 5
+          #   failureThreshold: 10
+          #   successThreshold: 1
+          # readinessProbe:
+          #   httpGet:
+          #       path: /health/
+          #       port: 8000
+          #   initialDelaySeconds: 150
+          #   periodSeconds: 5
+          #   failureThreshold: 10
+          #   successThreshold: 1
