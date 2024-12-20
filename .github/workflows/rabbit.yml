@@ -9,7 +9,7 @@ env:
   PROJECT_ID: bo-stage
   GKE_CLUSTER: box-be-cluster
   GKE_ZONE: asia-south1
-  VALUE_PATH: rabbitMQ/values.yaml
+  VALUE_PATH: values.yaml
 
 jobs:
   deploy:
