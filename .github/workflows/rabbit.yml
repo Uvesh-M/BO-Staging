@@ -32,7 +32,7 @@ jobs:
         echo "USE_GKE_GCLOUD_AUTH_PLUGIN=True" >> $GITHUB_ENV
 
     - name: Get GKE credentials
-      run: |-
+      run: |
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$PROJECT_ID"
 
     - name: Verify kubectl configuration
@@ -83,6 +83,7 @@ jobs:
     - name: Check RabbitMQ Logs
       run: |
         kubectl logs -l app.kubernetes.io/name=rabbitmq --all-containers --tail=100
+
     - name: Verify deployment
       run: |
         kubectl get pods -l app.kubernetes.io/name=rabbitmq
