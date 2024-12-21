@@ -17,7 +17,7 @@ spec:
   - host: {{ .Values.django.host }}
     http:
       paths:
-      - path: /
+      - path: /health/
         pathType: Prefix
         backend:
           service:
