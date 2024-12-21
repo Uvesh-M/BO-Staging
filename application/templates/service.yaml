@@ -7,7 +7,8 @@ metadata:
   annotations:
     cloud.google.com/backend-config: '{"default": "django-backend-config"}'
 spec:
-  type: LoadBalancer      
+  type: LoadBalancer
+  loadBalancerIP: better-staging-static-ip
   selector:
     app: {{ .Values.django.appName }}
   ports:
