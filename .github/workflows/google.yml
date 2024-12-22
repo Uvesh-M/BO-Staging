@@ -41,7 +41,7 @@ jobs:
 
       - name: Create SSL cert for GKE Ingress
         run: |
-          kubectl create secret tls gke-openssl-cert --cert=./ssl/tls.crt --key=./ssl/tls.key --project bo-stage
+          kubectl create secret tls gke-openssl-cert --cert=./ssl/tls.crt --key=./ssl/tls.key 
           
       - name: Deploy Helm Chart
         run: |
