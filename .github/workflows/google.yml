@@ -39,9 +39,9 @@ jobs:
         run: |
           gcloud compute addresses create gke-ingress-static-ip --global
 
-      - name: Create SSL cert for GKE Ingress
-        run: |
-          kubectl create secret tls gke-openssl-cert --cert=./ssl/tls.crt --key=./ssl/tls.key 
+      # - name: Create SSL cert for GKE Ingress
+      #   run: |
+      #     kubectl create secret tls gke-openssl-cert --cert=./ssl/tls.crt --key=./ssl/tls.key 
           
       - name: Deploy Helm Chart
         run: |
