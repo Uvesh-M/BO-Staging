@@ -2,5 +2,5 @@ global:
   environment: staging
 
 django:
-  appName: django-backend
+  appName: better-backend-app-django
   host: api-v2.integration-betteropinions.com
