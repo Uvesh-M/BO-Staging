@@ -4,3 +4,4 @@ global:
 django:
   appName: better-backend-app-django
 #  host: api-v2.integration-betteropinions.com
+  loadBalancerIP: "better-staging-static-ip"
