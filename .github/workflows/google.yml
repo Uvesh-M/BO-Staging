@@ -34,19 +34,24 @@ jobs:
           tar -zxvf helm.tar.gz
           sudo mv linux-amd64/helm /usr/local/bin/helm
           helm version
-
+      
+      - name: Generate TLS Certificate
+        run: |
+          openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ssl/tls.key -out ./ssl/tls.crt -subj "/CN=api-v2.integration-betteropinions.com"
+      
       - name: Create TLS Secret for GKE
         run: |
           kubectl create secret tls gke-openssl-cert --cert=./ssl/tls.crt --key=./ssl/tls.key --namespace default
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
 
+      - name: Create Static IP for GKE Ingress
+        run: |
+          gcloud compute addresses create gke-ingress-static-ip --global
+
       - name: Deploy Helm Chart
         run: |
           helm install django-env ./configuration 
           helm install backend-application ./application
-          gcloud compute addresses create gke-ingress-static-ip --global
-          openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj \
-                                             "/CN=api-v2.integration-betteropinions.com"
           helm install django-ingress ./ingress
           helm install django-hpa ./autoscalling
