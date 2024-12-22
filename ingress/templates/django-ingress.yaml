@@ -24,13 +24,3 @@ spec:
             name: {{ .Values.django.appName }}
             port:
               number: 80
-  - host: 34.102.237.149
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: better-backend-app-django
-            port: 
-              number: 80
