@@ -35,6 +35,12 @@ jobs:
           sudo mv linux-amd64/helm /usr/local/bin/helm
           helm version
 
+      - name: Create TLS Secret for GKE
+        run: |
+          kubectl create secret tls gke-openssl-cert --cert=./ssl/tls.crt --key=./ssl/tls.key --namespace default
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+
       - name: Deploy Helm Chart
         run: |
           helm install django-env ./configuration 
