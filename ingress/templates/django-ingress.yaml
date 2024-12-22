@@ -12,7 +12,7 @@ spec:
   tls:
   - hosts:
       - {{ .Values.django.host }}  # Add your host here, e.g., "example.com"
-#    secretName: gke-openssl-cert  # This should match the name of the Secret containing the self-signed cert
+    secretName: gke-openssl-cert  # This should match the name of the Secret containing the self-signed cert
   rules:
   - host: {{ .Values.django.host }}
     http:
