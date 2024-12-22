@@ -39,5 +39,8 @@ jobs:
         run: |
           helm install django-env ./configuration 
           helm install backend-application ./application
+          gcloud compute addresses create gke-ingress-static-ip --global
+          openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj \
+                                             "/CN=api-v2.integration-betteropinions.com"
           helm install django-ingress ./ingress
           helm install django-hpa ./autoscalling
