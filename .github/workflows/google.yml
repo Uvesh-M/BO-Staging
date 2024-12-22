@@ -35,10 +35,6 @@ jobs:
           sudo mv linux-amd64/helm /usr/local/bin/helm
           helm version
       
-      - name: Generate TLS Certificate
-        run: |
-          openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ssl/tls.key -out ./ssl/tls.crt -subj "/CN=api-v2.integration-betteropinions.com"
-      
       - name: Create TLS Secret for GKE
         run: |
           kubectl create secret tls gke-openssl-cert --cert=./ssl/tls.crt --key=./ssl/tls.key --namespace default
