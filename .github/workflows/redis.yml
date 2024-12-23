@@ -78,7 +78,7 @@ jobs:
           --set master.persistence.size=8Gi \
           --set replica.replicaCount=1 \
           --set auth.enabled=true \
-          --set auth.password=${{ secrets.REDIS_PASSWORD }} \
+          --set auth.password="${{ secrets.REDIS_PASSWORD }}" \
           --wait --timeout 10m
           
     - name: Verify Deployment
