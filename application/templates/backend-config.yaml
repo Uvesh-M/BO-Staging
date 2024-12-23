@@ -2,12 +2,12 @@ apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
   name: django-backend-config
-# spec:
-#   healthCheck:
-#     checkIntervalSec: 15          # Interval between health checks (in seconds)
-#     timeoutSec: 3                 # Timeout for each health check request (in seconds)
-#     healthyThreshold: 1           # Number of successful checks before considering the instance healthy
-#     unhealthyThreshold: 5        # Number of failed checks before considering the instance unhealthy
-#     type: HTTP                    # The type of health check (HTTP)
-#     requestPath: /health/         # The endpoint path to check health (adjust if your endpoint is different)
-#     port: 8000                    # Port where the Django app is running inside the container
+spec:
+  healthCheck:
+    checkIntervalSec: 15          # Interval between health checks (in seconds)
+    timeoutSec: 3                 # Timeout for each health check request (in seconds)
+    healthyThreshold: 1           # Number of successful checks before considering the instance healthy
+    unhealthyThreshold: 5        # Number of failed checks before considering the instance unhealthy
+    type: HTTP                    # The type of health check (HTTP)
+    requestPath: /health/         # The endpoint path to check health (adjust if your endpoint is different)
+    port: 8000                    # Port where the Django app is running inside the container
