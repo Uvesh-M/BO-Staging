@@ -18,7 +18,7 @@ spec:
         - name: {{ .Values.django.appName }}
           image: {{ .Values.django.image.repository }}:{{ .Values.django.image.tag }}
           ports:
-            - containerPort: 80
+            - containerPort: 8000
           envFrom:
             - configMapRef:
                 name: {{ .Values.configMap.name }}
@@ -29,19 +29,21 @@ spec:
             limits:
               memory: {{ .Values.django.resources.limits.memory }}
               cpu: {{ .Values.django.resources.limits.cpu }}
-          # livenessProbe:
-          #   httpGet:
-          #       path: /health/
-          #       port: 8000
-          #   initialDelaySeconds: 10
-          #   periodSeconds: 15
-          #   failureThreshold: 5
-          #   successThreshold: 1
-          # readinessProbe:
-          #   httpGet:
-          #       path: /health/
-          #       port: 8000
-          #   initialDelaySeconds: 10
-          #   periodSeconds: 15
-          #   failureThreshold: 5
-          #   successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /healthz   # Adjust the path according to your app's health check endpoint
+              port: 8000       # Port where your app is running
+            initialDelaySeconds: 5  # Wait 5 seconds before the first probe
+            periodSeconds: 10       # Probe every 10 seconds
+            failureThreshold: 3     # Restart the container after 3 failures
+            successThreshold: 1     # One successful probe to be considered healthy
+            timeoutSeconds: 2      # Timeout after 2 seconds if no response
+          readinessProbe:
+            httpGet:
+              path: /readiness  # Adjust the path for readiness check
+              port: 8000       # Port where your app is running
+            initialDelaySeconds: 5  # Wait 5 seconds before the first probe
+            periodSeconds: 10       # Probe every 10 seconds
+            failureThreshold: 3     # Container considered not ready after 3 failures
+            successThreshold: 1     # One successful probe to be considered ready
+            timeoutSeconds: 2      # Timeout after 2 seconds if no response
