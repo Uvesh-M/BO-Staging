@@ -2,7 +2,7 @@ apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
   name: django-backend-config
-# spec:
+spec:
 #   healthCheck:
 #     checkIntervalSec: 15          # Interval between health checks (in seconds)
 #     timeoutSec: 3                 # Timeout for each health check request (in seconds)
