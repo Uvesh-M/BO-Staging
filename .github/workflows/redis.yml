@@ -14,7 +14,7 @@ env:
   VALUE_PATH: redis/values.yaml
   DEPLOYMENT_NAME: redis
   NAMESPACE: default
-
+  
 jobs:
   deploy:
     name: Deploy to GKE
@@ -68,18 +68,11 @@ jobs:
         helm repo add bitnami https://charts.bitnami.com/bitnami
         helm repo update
         
-    - name: Check if values file exists
-      run: |
-        if [ ! -f "${{ env.VALUE_PATH }}" ]; then
-          echo "Values file not found at ${{ env.VALUE_PATH }}"
-          exit 1
-        fi
-        
     - name: Deploy Redis
       run: |
         helm upgrade --install $DEPLOYMENT_NAME bitnami/redis \
           --namespace $NAMESPACE \
-          --values ${{ env.VALUE_PATH }} \
+          --values ./redis/values.yaml \
           --set master.service.type=ClusterIP \
           --set master.persistence.storageClass=standard-rwo \
           --set master.persistence.size=8Gi \
@@ -87,7 +80,7 @@ jobs:
           --set auth.enabled=true \
           --set auth.password=${{ secrets.REDIS_PASSWORD }} \
           --wait --timeout 10m
-      
+          
     - name: Verify Deployment
       run: |
         kubectl get pods -n $NAMESPACE
