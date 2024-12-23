@@ -69,6 +69,8 @@ jobs:
         helm repo update
         
     - name: Deploy Redis
+      env:
+        REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
       run: |
         helm upgrade --install $DEPLOYMENT_NAME bitnami/redis \
           --namespace $NAMESPACE \
@@ -78,7 +80,7 @@ jobs:
           --set master.persistence.size=8Gi \
           --set replica.replicaCount=1 \
           --set auth.enabled=true \
-          --set auth.password="${{ secrets.REDIS_PASSWORD }}" \
+          --set auth.password=$REDIS_PASSWORD \
           --wait --timeout 10m
           
     - name: Verify Deployment
