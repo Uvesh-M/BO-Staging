@@ -1,5 +1,5 @@
 name: Deploy Redis to GKE
-
+ 
 on:
   push:
     branches: [ main ]
@@ -86,4 +86,4 @@ jobs:
     - name: Verify Deployment
       run: |
         kubectl get pods -n $NAMESPACE
-        kubectl get svc -n $NAMESPACE
+        kubectl get svc -n $NAMESPACE 
